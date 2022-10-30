@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ehmicky/design/main/modern-errors/modern-errors_dark.svg"/>
+  <img alt="modern-errors logo" src="https://raw.githubusercontent.com/ehmicky/design/main/modern-errors/modern-errors.svg" width="600"/>
+</picture>
+
 [![Codecov](https://img.shields.io/codecov/c/github/ehmicky/modern-errors-bugs.svg?label=tested&logo=codecov)](https://codecov.io/gh/ehmicky/modern-errors-bugs)
 [![TypeScript](https://img.shields.io/badge/-typed-brightgreen?logo=typescript&colorA=gray&logoColor=0096ff)](/types/main.d.ts)
 [![Node](https://img.shields.io/node/v/modern-errors-bugs.svg?logo=node.js&logoColor=66cc33)](https://www.npmjs.com/package/modern-errors-bugs)
@@ -6,14 +11,32 @@
 
 `modern-errors` plugin to print where to report bugs.
 
-Work in progress!
+This appends a bug reports URL to error messages.
 
 # Features
 
 # Example
 
+[Adding the plugin](https://github.com/ehmicky/modern-errors#adding-plugins) to
+[`modern-errors`](https://github.com/ehmicky/modern-errors).
+
 ```js
+// `errors.js`
+import modernErrors from 'modern-errors'
 import modernErrorsBugs from 'modern-errors-bugs'
+
+export const AnyError = modernErrors([modernErrorsBugs])
+```
+
+...
+
+```js
+export const UnknownError = AnyError.subclass('UnknownError', {
+  bugs: 'https://github.com/my-name/my-project/issues',
+})
+
+// UnknownError: Cannot read properties of null (reading 'trim')
+// Please report this bug at: https://github.com/my-name/my-project/issues
 ```
 
 # Install
@@ -28,19 +51,60 @@ not `require()`.
 
 # API
 
-## modernErrorsBugs(value, options?)
+## modernErrorsBugs
 
-`value` `any`\
-`options` [`Options?`](#options)\
-_Return value_: [`object`](#return-value)
+_Type_: `Plugin`
 
-### Options
+Plugin object to
+[pass to `modernErrors()`](https://github.com/ehmicky/modern-errors#adding-plugins).
 
-Object with the following properties.
+## Bugs
 
-### Return value
+_Type_: `string`
 
-Object with the following properties.
+Bug reports URL appended to error messages.
+
+## Configuration
+
+Although this is especially useful with
+[`UnknownError`](https://github.com/ehmicky/modern-errors/README.md#unknown-errors),
+this plugin can also apply to (in priority order):
+
+- Any error: second argument to
+  [`modernErrors()`](https://github.com/ehmicky/modern-errors#modernerrorsplugins-options)
+
+```js
+export const AnyError = modernErrors(plugins, {
+  bugs: 'https://github.com/user/repo/issues',
+})
+```
+
+- Any error of multiple classes: using
+  [`ErrorClass.subclass()`](https://github.com/ehmicky/modern-errors#anyerrorsubclassname-options)
+
+```js
+export const SharedError = AnyError.subclass('SharedError', {
+  bugs: 'https://github.com/user/repo/issues',
+})
+
+export const InputError = SharedError.subclass('InputError')
+export const AuthError = SharedError.subclass('AuthError')
+```
+
+- Any error of a specific class: second argument to
+  [`AnyError.subclass()`](https://github.com/ehmicky/modern-errors#anyerrorsubclassname-options)
+
+```js
+export const InputError = AnyError.subclass('InputError', {
+  bugs: 'https://github.com/user/repo/issues',
+})
+```
+
+- A specific error: second argument to the error's constructor
+
+```js
+throw new InputError('...', { bugs: 'https://github.com/user/repo/issues' })
+```
 
 # Related projects
 

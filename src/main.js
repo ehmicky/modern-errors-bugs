@@ -47,7 +47,6 @@ const properties = function ({ error, options }) {
   return options === '' ? {} : { message: `${error.message}\n${options}` }
 }
 
-// eslint-disable-next-line import/no-default-export
 export default {
   name: 'bugs',
   getOptions,
