@@ -35,7 +35,8 @@ export const UnknownError = AnyError.subclass('UnknownError', {
 })
 ```
 
-Errors now include the following message.
+[Unknown errors](https://github.com/ehmicky/modern-errors/README.md#unknown-errors)
+now include the following message.
 
 ```
 Please report this bug at: https://github.com/my-name/my-project/issues
@@ -62,11 +63,12 @@ Plugin object to
 
 ## Configuration
 
-The bug reports URL must be a `string` or
-[`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL). This plugin is
-especially useful with
-[_unknown_ errors](https://github.com/ehmicky/modern-errors/README.md#unknown-errors).
-However, it can also apply to (in priority order):
+The bug reports URL must be a `string` or a
+[`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL).
+
+While this plugin is especially useful with
+[_unknown_ errors](https://github.com/ehmicky/modern-errors/README.md#unknown-errors),
+it can also apply to (in priority order):
 
 - Any error: second argument to
   [`modernErrors()`](https://github.com/ehmicky/modern-errors#modernerrorsplugins-options)
