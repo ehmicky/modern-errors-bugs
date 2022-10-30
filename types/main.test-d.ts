@@ -1,8 +1,12 @@
-import { expectType, expectAssignable } from 'tsd'
+import { expectType, expectError } from 'tsd'
 
-import templateName, { Options } from './main.js'
+import modernErrors from '../main.js'
+import plugin from './bugs.js'
 
-expectType<object>(templateName(true))
+const AnyError = modernErrors([plugin])
+const error = new AnyError('', { cause: '' })
 
-templateName(true, {})
-expectAssignable<Options>({})
+modernErrors([plugin], { bugs: 'https://example.com' })
+expectError(modernErrors([plugin], { bugs: true }))
+
+expectType<string>(error.message)
