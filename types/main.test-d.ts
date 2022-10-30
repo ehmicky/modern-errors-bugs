@@ -1,7 +1,6 @@
-import { expectType, expectError } from 'tsd'
-
 import modernErrors from 'modern-errors'
 import modernErrorsBugs from 'modern-errors-bugs'
+import { expectType, expectError } from 'tsd'
 
 const AnyError = modernErrors([modernErrorsBugs])
 const error = new AnyError('', { cause: '' })
