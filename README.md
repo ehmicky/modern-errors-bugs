@@ -28,15 +28,18 @@ import modernErrorsBugs from 'modern-errors-bugs'
 export const AnyError = modernErrors([modernErrorsBugs])
 ```
 
-...
+[Configure](#configuration) the bugs report URL.
 
 ```js
 export const UnknownError = AnyError.subclass('UnknownError', {
   bugs: 'https://github.com/my-name/my-project/issues',
 })
+```
 
-// UnknownError: Cannot read properties of null (reading 'trim')
-// Please report this bug at: https://github.com/my-name/my-project/issues
+Errors now include the following message.
+
+```
+Please report this bug at: https://github.com/my-name/my-project/issues
 ```
 
 # Install
@@ -58,24 +61,19 @@ _Type_: `Plugin`
 Plugin object to
 [pass to `modernErrors()`](https://github.com/ehmicky/modern-errors#adding-plugins).
 
-## Bugs
-
-_Type_: `string`
-
-Bug reports URL appended to error messages.
-
 ## Configuration
 
-Although this is especially useful with
-[`UnknownError`](https://github.com/ehmicky/modern-errors/README.md#unknown-errors),
-this plugin can also apply to (in priority order):
+A bug reports URL (as a `string` or `URL`) must be specified. It is especially
+useful with
+[_unknown_ errors](https://github.com/ehmicky/modern-errors/README.md#unknown-errors).
+However, it can also be applied to (in priority order):
 
 - Any error: second argument to
   [`modernErrors()`](https://github.com/ehmicky/modern-errors#modernerrorsplugins-options)
 
 ```js
 export const AnyError = modernErrors(plugins, {
-  bugs: 'https://github.com/user/repo/issues',
+  bugs: 'https://github.com/my-name/my-project/issues',
 })
 ```
 
@@ -84,7 +82,7 @@ export const AnyError = modernErrors(plugins, {
 
 ```js
 export const SharedError = AnyError.subclass('SharedError', {
-  bugs: 'https://github.com/user/repo/issues',
+  bugs: 'https://github.com/my-name/my-project/issues',
 })
 
 export const InputError = SharedError.subclass('InputError')
@@ -96,14 +94,16 @@ export const AuthError = SharedError.subclass('AuthError')
 
 ```js
 export const InputError = AnyError.subclass('InputError', {
-  bugs: 'https://github.com/user/repo/issues',
+  bugs: 'https://github.com/my-name/my-project/issues',
 })
 ```
 
 - A specific error: second argument to the error's constructor
 
 ```js
-throw new InputError('...', { bugs: 'https://github.com/user/repo/issues' })
+throw new InputError('...', {
+  bugs: 'https://github.com/my-name/my-project/issues',
+})
 ```
 
 # Related projects
