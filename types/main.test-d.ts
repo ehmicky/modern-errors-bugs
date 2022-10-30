@@ -1,12 +1,12 @@
 import { expectType, expectError } from 'tsd'
 
-import modernErrors from '../main.js'
-import plugin from './bugs.js'
+import modernErrors from 'modern-errors'
+import modernErrorsBugs from 'modern-errors-bugs'
 
-const AnyError = modernErrors([plugin])
+const AnyError = modernErrors([modernErrorsBugs])
 const error = new AnyError('', { cause: '' })
 
-modernErrors([plugin], { bugs: 'https://example.com' })
-expectError(modernErrors([plugin], { bugs: true }))
+modernErrors([modernErrorsBugs], { bugs: 'https://example.com' })
+expectError(modernErrors([modernErrorsBugs], { bugs: true }))
 
 expectType<string>(error.message)
