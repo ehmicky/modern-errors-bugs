@@ -19,7 +19,6 @@ This appends a bug reports URL to error messages.
 [`modern-errors`](https://github.com/ehmicky/modern-errors).
 
 ```js
-// `errors.js`
 import modernErrors from 'modern-errors'
 import modernErrorsBugs from 'modern-errors-bugs'
 
