@@ -3,7 +3,7 @@ import type { Info } from 'modern-errors'
 /**
  * `modern-errors-bugs` plugin.
  *
- * The `bugs` option appends a bug reports URL to error messages.
+ * This appends a bug reports URL to error messages.
  *
  * @example
  * ```js
@@ -11,7 +11,7 @@ import type { Info } from 'modern-errors'
  *   bugs: 'https://github.com/my-name/my-project/issues',
  * })
  *
- * // UnknownError: Cannot read properties of null (reading 'trim')
+ * // Errors now include the following message:
  * // Please report this bug at: https://github.com/my-name/my-project/issues
  * ```
  */
