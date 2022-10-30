@@ -17,7 +17,7 @@ import type { Info } from 'modern-errors'
  */
 declare const plugin: {
   name: 'bugs'
-  getOptions: (input: string) => string
+  getOptions: (input: string | URL) => string
   properties: (info: Info['properties']) => { message: string }
 }
 export default plugin
