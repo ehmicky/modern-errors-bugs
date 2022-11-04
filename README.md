@@ -61,8 +61,9 @@ Plugin object to
 
 ## Configuration
 
-The bug reports URL must be a `string` or `URL`. This plugin is especially
-useful with
+The bug reports URL must be a `string` or
+[`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL). This plugin is
+especially useful with
 [_unknown_ errors](https://github.com/ehmicky/modern-errors/README.md#unknown-errors).
 However, it can also apply to (in priority order):
 
@@ -83,15 +84,15 @@ export const SharedError = AnyError.subclass('SharedError', {
   bugs: 'https://github.com/my-name/my-project/issues',
 })
 
-export const InputError = SharedError.subclass('InputError')
-export const AuthError = SharedError.subclass('AuthError')
+export const UnknownError = SharedError.subclass('UnknownError')
+export const SystemError = SharedError.subclass('SystemError')
 ```
 
 - Any error of a specific class: second argument to
   [`AnyError.subclass()`](https://github.com/ehmicky/modern-errors#anyerrorsubclassname-options)
 
 ```js
-export const InputError = AnyError.subclass('InputError', {
+export const UnknownError = AnyError.subclass('UnknownError', {
   bugs: 'https://github.com/my-name/my-project/issues',
 })
 ```
@@ -99,7 +100,7 @@ export const InputError = AnyError.subclass('InputError', {
 - A specific error: second argument to the error's constructor
 
 ```js
-throw new InputError('...', {
+throw new SystemError('...', {
   bugs: 'https://github.com/my-name/my-project/issues',
 })
 ```
