@@ -13,8 +13,6 @@
 
 This appends a bug reports URL to error messages.
 
-# Features
-
 # Example
 
 [Adding the plugin](https://github.com/ehmicky/modern-errors#adding-plugins) to
@@ -28,7 +26,7 @@ import modernErrorsBugs from 'modern-errors-bugs'
 export const AnyError = modernErrors([modernErrorsBugs])
 ```
 
-[Configure](#configuration) the bugs report URL.
+[Configuring](#configuration) the bugs report URL.
 
 ```js
 export const UnknownError = AnyError.subclass('UnknownError', {
@@ -63,10 +61,10 @@ Plugin object to
 
 ## Configuration
 
-A bug reports URL (as a `string` or `URL`) must be specified. It is especially
+The bug reports URL must be a `string` or `URL`. This plugin is especially
 useful with
 [_unknown_ errors](https://github.com/ehmicky/modern-errors/README.md#unknown-errors).
-However, it can also be applied to (in priority order):
+However, it can also apply to (in priority order):
 
 - Any error: second argument to
   [`modernErrors()`](https://github.com/ehmicky/modern-errors#modernerrorsplugins-options)
