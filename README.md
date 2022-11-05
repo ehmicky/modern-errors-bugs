@@ -107,6 +107,21 @@ throw new SystemError('...', {
 
 # Related projects
 
+- [`modern-errors`](https://github.com/ehmicky/modern-errors): Handle errors
+  like it's 2022 🔮
+- [`modern-errors-cli`](https://github.com/ehmicky/modern-errors-cli): Handle
+  errors in CLI modules
+- [`modern-errors-process`](https://github.com/ehmicky/modern-errors-process):
+  Handle process errors
+- [`modern-errors-serialize`](https://github.com/ehmicky/modern-errors-serialize):
+  Serialize/parse errors
+- [`modern-errors-stack`](https://github.com/ehmicky/modern-errors-stack): Clean
+  stack traces
+- [`modern-errors-http`](https://github.com/ehmicky/modern-errors-http): Create
+  HTTP error responses
+- [`modern-errors-winston`](https://github.com/ehmicky/modern-errors-winston):
+  Log errors with Winston
+
 # Support
 
 For any question, _don't hesitate_ to [submit an issue on GitHub](../../issues).
