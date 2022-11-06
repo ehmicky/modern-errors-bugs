@@ -10,7 +10,7 @@
 [![Medium](https://img.shields.io/badge/%E2%80%8B-medium-brightgreen.svg?logo=medium)](https://medium.com/@ehmicky)
 
 [`modern-errors`](https://github.com/ehmicky/modern-errors)
-[plugin](https://github.com/ehmicky/modern-errors#plugins-1) to print where to
+[plugin](https://github.com/ehmicky/modern-errors#-plugins) to print where to
 report bugs.
 
 This appends a bug reports URL to error messages.
@@ -35,7 +35,7 @@ export const UnknownError = AnyError.subclass('UnknownError', {
 })
 ```
 
-[Unknown errors](https://github.com/ehmicky/modern-errors/README.md#unknown-errors)
+[Unknown errors](https://github.com/ehmicky/modern-errors/README.md#-unknown-errors)
 now include the following message.
 
 ```
@@ -67,7 +67,7 @@ The bug reports URL must be a `string` or a
 [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL).
 
 While this plugin is especially useful with
-[_unknown_ errors](https://github.com/ehmicky/modern-errors/README.md#unknown-errors),
+[_unknown_ errors](https://github.com/ehmicky/modern-errors/README.md#-unknown-errors),
 it can also apply to (in priority order):
 
 - Any error: second argument to
