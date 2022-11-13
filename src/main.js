@@ -1,11 +1,14 @@
-import { getOptions } from './options.js'
+import { getOptions, BUGS_PREFIX } from './options.js'
 
-// On any new error, if `cause` has a `bugs`, it is re-appended to the end.
-// `bugs` is set at instantiation time instead of during error handling as:
-//   - This simplifies error handling logic
-//   - This provides with better debugging and more immediate experience
-const properties = function ({ error, options }) {
-  return options === '' ? {} : { message: `${error.message}\n${options}` }
+const properties = function ({ error: { message }, options }) {
+  const messageA = message.split('\n').filter(hasNoBugsUrl).join('\n')
+  const messageB = options === '' ? messageA : `${messageA}\n${options}`
+  return { message: messageB }
+}
+
+// When called multiple times, previous `bugs` lines are removed
+const hasNoBugsUrl = function (line) {
+  return !line.startsWith(BUGS_PREFIX)
 }
 
 export default {

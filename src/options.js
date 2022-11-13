@@ -5,7 +5,7 @@ export const getOptions = function (bugs = '') {
   return bugs === '' ? bugs : `${BUGS_PREFIX}${ensureBugsUrl(bugs)}`
 }
 
-const BUGS_PREFIX = 'Please report this bug at: '
+export const BUGS_PREFIX = 'Please report this bug at: '
 
 // We enforce `bugs` is a valid URL.
 //  - Some terminals add links to URL, which makes it useful
