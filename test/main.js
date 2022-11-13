@@ -24,9 +24,8 @@ each(
   ['', TEST_MESSAGE],
   ({ title }, causeMessage, parentMessage) => {
     test(`bugs is replaced when wrapped and overridden | ${title}`, (t) => {
-      const cause = new BaseError(causeMessage, { bugs: TEST_BUGS_URL })
       const { message } = new BaseError(parentMessage, {
-        cause,
+        cause: new BaseError(causeMessage, { bugs: TEST_BUGS_URL }),
         bugs: TEST_BUGS_STRING,
       })
       t.true(message.startsWith(causeMessage))
