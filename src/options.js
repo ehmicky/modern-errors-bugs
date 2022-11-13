@@ -1,36 +1,46 @@
-// If defined, the `bugs` option prints a line recommending to report the error.
+// If defined, the option prints a line recommending to report the error.
 // The option value can be the `bugs.url` field of `package.json`, which is
 // easier to retrieve with JSON imports (Node >=16.14.0)
-export const getOptions = function (bugs = '') {
-  return bugs === '' ? bugs : `${BUGS_PREFIX}${ensureBugsUrl(bugs)}`
+export const getOptions = function (options) {
+  return options === undefined
+    ? options
+    : `${BUGS_PREFIX}${ensureBugsUrl(options)}`
 }
 
 export const BUGS_PREFIX = 'Please report this bug at: '
 
-// We enforce `bugs` is a valid URL.
+// We enforce `options` is a valid URL.
 //  - Some terminals add links to URL, which makes it useful
-const ensureBugsUrl = function (bugs) {
-  if (Object.prototype.toString.call(bugs) === '[object URL]') {
-    return bugs
+const ensureBugsUrl = function (options) {
+  if (Object.prototype.toString.call(options) === '[object URL]') {
+    return options
   }
 
-  if (typeof bugs !== 'string') {
-    throw new TypeError(`It must be a string or a URL: ${bugs}`)
-  }
+  validateBugsString(options)
 
   try {
-    return new URL(bugs)
+    return new URL(options)
   } catch (error) {
     throw new TypeError(
-      `It must not be "${bugs}" but ${getUrlError(error, bugs)}`,
+      `It must not be "${options}" but ${getUrlError(error, options)}`,
     )
   }
 }
 
-const getUrlError = function (error, bugs) {
+const validateBugsString = function (options) {
+  if (typeof options !== 'string') {
+    throw new TypeError(`It must be a string or a URL: ${options}`)
+  }
+
+  if (options === '') {
+    throw new TypeError('It must not be an empty string')
+  }
+}
+
+const getUrlError = function (error, options) {
   try {
     // eslint-disable-next-line no-new
-    new URL(bugs, EXAMPLE_ORIGIN)
+    new URL(options, EXAMPLE_ORIGIN)
     return 'an absolute URL.'
   } catch {
     return `a valid URL: ${error.message}.`

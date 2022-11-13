@@ -3,17 +3,16 @@ import { each } from 'test-each'
 
 import { BaseError, TEST_BUGS_URL, TEST_MESSAGE } from './helpers/main.js'
 
-each([true, 'test', '//'], ({ title }, bugs) => {
+each([true, '', 'test', '//'], ({ title }, bugs) => {
   test(`bugs is validated | ${title}`, (t) => {
     // eslint-disable-next-line max-nested-callbacks
     t.throws(() => new BaseError('test', { bugs }))
   })
 })
 
-each([undefined, ''], ({ title }, bugs) => {
+each([undefined, {}, { bugs: undefined }], ({ title }, options) => {
   test(`bugs is ignored if empty | ${title}`, (t) => {
-    const { message } = new BaseError(TEST_MESSAGE, { bugs })
-    t.is(message, TEST_MESSAGE)
+    t.is(new BaseError(TEST_MESSAGE, options).message, TEST_MESSAGE)
   })
 })
 

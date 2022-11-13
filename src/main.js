@@ -1,9 +1,12 @@
 import { getOptions, BUGS_PREFIX } from './options.js'
 
 const properties = function ({ error: { message }, options }) {
+  if (options === undefined) {
+    return {}
+  }
+
   const messageA = message.split('\n').filter(hasNoBugsUrl).join('\n')
-  const messageB = options === '' ? messageA : `${messageA}\n${options}`
-  return { message: messageB }
+  return { message: `${messageA}\n${options}` }
 }
 
 // When called multiple times, previous `bugs` lines are removed
