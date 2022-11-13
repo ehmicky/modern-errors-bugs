@@ -100,7 +100,7 @@ export const UnknownError = BaseError.subclass('UnknownError', {
   [`new ErrorClass()`](https://github.com/ehmicky/modern-errors#options-3)
 
 ```js
-throw new SystemError('...', {
+throw new ExampleError('...', {
   bugs: 'https://github.com/my-name/my-project/issues',
 })
 ```
