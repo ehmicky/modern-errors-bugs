@@ -5,7 +5,7 @@ import { expectType, expectError } from 'tsd'
 const BaseError = ModernError.subclass('BaseError', {
   plugins: [modernErrorsBugs],
 })
-const error = new BaseError('', { cause: '' })
+const error = new BaseError('')
 
 ModernError.subclass('TestError', {
   plugins: [modernErrorsBugs],
