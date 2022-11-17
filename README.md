@@ -23,10 +23,12 @@ This appends a bug reports URL to error messages.
 [`modern-errors`](https://github.com/ehmicky/modern-errors).
 
 ```js
-import modernErrors from 'modern-errors'
+import ModernError from 'modern-errors'
 import modernErrorsBugs from 'modern-errors-bugs'
 
-export const BaseError = modernErrors([modernErrorsBugs])
+export const BaseError = ModernError.subclass('BaseError', {
+  plugins: [modernErrorsBugs],
+})
 ```
 
 [Configuring](#configuration) the bugs report URL.
@@ -63,7 +65,7 @@ not `require()`.
 _Type_: `Plugin`
 
 Plugin object to
-[pass to `modernErrors()`](https://github.com/ehmicky/modern-errors#adding-plugins).
+[pass to the `plugins` option of `ErrorClass.subclass()`](https://github.com/ehmicky/modern-errors#adding-plugins).
 
 ## Configuration
 
@@ -75,28 +77,17 @@ While this plugin is especially useful with
 it can also apply to (in priority order):
 
 - Any error: second argument to
-  [`modernErrors()`](https://github.com/ehmicky/modern-errors#modernerrorsplugins-options)
+  [`ModernError.subclass()`](https://github.com/ehmicky/modern-errors#options-1)
 
 ```js
-export const BaseError = modernErrors(plugins, {
+export const BaseError = ModernError.subclass('BaseError', {
+  plugins: [modernErrorsBugs],
   bugs: 'https://github.com/my-name/my-project/issues',
 })
 ```
 
-- Any error of multiple classes: using
-  [`ErrorClass.subclass()`](https://github.com/ehmicky/modern-errors#baseerrorsubclassname-options)
-
-```js
-export const SharedError = BaseError.subclass('SharedError', {
-  bugs: 'https://github.com/my-name/my-project/issues',
-})
-
-export const UnknownError = SharedError.subclass('UnknownError')
-export const SystemError = SharedError.subclass('SystemError')
-```
-
-- Any error of a specific class: second argument to
-  [`BaseError.subclass()`](https://github.com/ehmicky/modern-errors#baseerrorsubclassname-options)
+- Any error of a specific class (and its subclasses): second argument to
+  [`ErrorClass.subclass()`](https://github.com/ehmicky/modern-errors#options-1)
 
 ```js
 export const UnknownError = BaseError.subclass('UnknownError', {
@@ -104,7 +95,8 @@ export const UnknownError = BaseError.subclass('UnknownError', {
 })
 ```
 
-- A specific error: second argument to the error's constructor
+- A specific error: second argument to
+  [`new ErrorClass()`](https://github.com/ehmicky/modern-errors#options-3)
 
 ```js
 throw new SystemError('...', {
