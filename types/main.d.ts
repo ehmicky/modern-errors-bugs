@@ -7,7 +7,7 @@ import type { Info } from 'modern-errors'
  *
  * @example
  * ```js
- * export const UnknownError = AnyError.subclass('UnknownError', {
+ * export const UnknownError = BaseError.subclass('UnknownError', {
  *   bugs: 'https://github.com/my-name/my-project/issues',
  * })
  *

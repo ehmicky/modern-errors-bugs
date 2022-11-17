@@ -2,7 +2,7 @@ import test from 'ava'
 import { each } from 'test-each'
 
 import {
-  AnyError,
+  BaseError,
   TestError,
   TEST_BUGS_URL,
   TEST_BUGS_STRING,
@@ -20,8 +20,8 @@ test('bugs is reflected in stack', (t) => {
   t.true(stack.includes(TEST_BUGS_URL))
 })
 
-test('bugs can be used by AnyError', (t) => {
-  const { message } = new AnyError(TEST_MESSAGE, {
+test('bugs can be used by BaseError', (t) => {
+  const { message } = new BaseError(TEST_MESSAGE, {
     cause: '',
     bugs: TEST_BUGS_URL,
   })
@@ -30,7 +30,7 @@ test('bugs can be used by AnyError', (t) => {
 })
 
 each(
-  [TestError, AnyError],
+  [TestError, BaseError],
   ['', 'causeMessage'],
   ['', TEST_MESSAGE],
   // eslint-disable-next-line max-params
@@ -61,9 +61,9 @@ each(
       t.false(message.includes(TEST_BUGS_URL))
     })
 
-    test(`bugs is bumped with AnyError using undefined value | ${title}`, (t) => {
+    test(`bugs is bumped with BaseError using undefined value | ${title}`, (t) => {
       const cause = new TestError(causeMessage, { bugs: TEST_BUGS_URL })
-      const { message } = new AnyError(parentMessage, { cause })
+      const { message } = new BaseError(parentMessage, { cause })
       t.true(message.startsWith(causeMessage))
       t.true(message.includes(parentMessage))
       t.true(message.endsWith(TEST_BUGS_URL))

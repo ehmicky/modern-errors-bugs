@@ -26,13 +26,13 @@ This appends a bug reports URL to error messages.
 import modernErrors from 'modern-errors'
 import modernErrorsBugs from 'modern-errors-bugs'
 
-export const AnyError = modernErrors([modernErrorsBugs])
+export const BaseError = modernErrors([modernErrorsBugs])
 ```
 
 [Configuring](#configuration) the bugs report URL.
 
 ```js
-export const UnknownError = AnyError.subclass('UnknownError', {
+export const UnknownError = BaseError.subclass('UnknownError', {
   bugs: 'https://github.com/my-name/my-project/issues',
 })
 ```
@@ -78,16 +78,16 @@ it can also apply to (in priority order):
   [`modernErrors()`](https://github.com/ehmicky/modern-errors#modernerrorsplugins-options)
 
 ```js
-export const AnyError = modernErrors(plugins, {
+export const BaseError = modernErrors(plugins, {
   bugs: 'https://github.com/my-name/my-project/issues',
 })
 ```
 
 - Any error of multiple classes: using
-  [`ErrorClass.subclass()`](https://github.com/ehmicky/modern-errors#anyerrorsubclassname-options)
+  [`ErrorClass.subclass()`](https://github.com/ehmicky/modern-errors#baseerrorsubclassname-options)
 
 ```js
-export const SharedError = AnyError.subclass('SharedError', {
+export const SharedError = BaseError.subclass('SharedError', {
   bugs: 'https://github.com/my-name/my-project/issues',
 })
 
@@ -96,10 +96,10 @@ export const SystemError = SharedError.subclass('SystemError')
 ```
 
 - Any error of a specific class: second argument to
-  [`AnyError.subclass()`](https://github.com/ehmicky/modern-errors#anyerrorsubclassname-options)
+  [`BaseError.subclass()`](https://github.com/ehmicky/modern-errors#baseerrorsubclassname-options)
 
 ```js
-export const UnknownError = AnyError.subclass('UnknownError', {
+export const UnknownError = BaseError.subclass('UnknownError', {
   bugs: 'https://github.com/my-name/my-project/issues',
 })
 ```
