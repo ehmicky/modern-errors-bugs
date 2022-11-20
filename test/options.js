@@ -5,7 +5,6 @@ import { BaseError, TEST_BUGS_URL, TEST_MESSAGE } from './helpers/main.js'
 
 each([true, '', 'test', '//'], ({ title }, bugs) => {
   test(`bugs is validated | ${title}`, (t) => {
-    // eslint-disable-next-line max-nested-callbacks
     t.throws(() => new BaseError('test', { bugs }))
   })
 })
