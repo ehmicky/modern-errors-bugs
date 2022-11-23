@@ -107,8 +107,8 @@ throw new ExampleError('...', {
 
 # Related projects
 
-- [`modern-errors`](https://github.com/ehmicky/modern-errors): Handle errors
-  like it's 2023 🔮
+- [`modern-errors`](https://github.com/ehmicky/modern-errors): Handle errors in
+  a simple, stable, consistent way
 - [`modern-errors-cli`](https://github.com/ehmicky/modern-errors-cli): Handle
   errors in CLI modules
 - [`modern-errors-process`](https://github.com/ehmicky/modern-errors-process):
