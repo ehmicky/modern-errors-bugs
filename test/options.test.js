@@ -1,7 +1,7 @@
 import test from 'ava'
 import { each } from 'test-each'
 
-import { BaseError, TEST_BUGS_URL, TEST_MESSAGE } from './helpers/main.js'
+import { BaseError, TEST_BUGS_URL, TEST_MESSAGE } from './helpers/main.test.js'
 
 each([true, '', 'test', '//'], ({ title }, bugs) => {
   test(`bugs is validated | ${title}`, (t) => {

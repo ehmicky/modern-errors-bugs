@@ -6,7 +6,7 @@ import {
   TEST_BUGS_URL,
   TEST_BUGS_STRING,
   TEST_MESSAGE,
-} from './helpers/main.js'
+} from './helpers/main.test.js'
 
 test('bugs is shown in message', (t) => {
   const { message } = new BaseError(TEST_MESSAGE, { bugs: TEST_BUGS_URL })
