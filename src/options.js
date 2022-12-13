@@ -1,17 +1,14 @@
 // If defined, the option prints a line recommending to report the error.
 // The option value can be the `bugs.url` field of `package.json`, which is
 // easier to retrieve with JSON imports (Node >=16.14.0)
-export const getOptions = function (options) {
-  return options === undefined
-    ? options
-    : `${BUGS_PREFIX}${ensureBugsUrl(options)}`
-}
+export const getOptions = (options) =>
+  options === undefined ? options : `${BUGS_PREFIX}${ensureBugsUrl(options)}`
 
 export const BUGS_PREFIX = 'Please report this bug at: '
 
 // We enforce `options` is a valid URL.
 //  - Some terminals add links to URL, which makes it useful
-const ensureBugsUrl = function (options) {
+const ensureBugsUrl = (options) => {
   if (Object.prototype.toString.call(options) === '[object URL]') {
     return options
   }
@@ -27,7 +24,7 @@ const ensureBugsUrl = function (options) {
   }
 }
 
-const validateBugsString = function (options) {
+const validateBugsString = (options) => {
   if (typeof options !== 'string') {
     throw new TypeError(`It must be a string or a URL: ${options}`)
   }
@@ -37,7 +34,7 @@ const validateBugsString = function (options) {
   }
 }
 
-const getUrlError = function (error, options) {
+const getUrlError = (error, options) => {
   try {
     // eslint-disable-next-line no-new
     new URL(options, EXAMPLE_ORIGIN)
