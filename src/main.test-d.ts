@@ -1,7 +1,7 @@
 import ModernError from 'modern-errors'
+import modernErrorsBugs from 'modern-errors-bugs'
 import { expectType } from 'tsd'
 
-import modernErrorsBugs from 'modern-errors-bugs'
 
 const BaseError = ModernError.subclass('BaseError', {
   plugins: [modernErrorsBugs],

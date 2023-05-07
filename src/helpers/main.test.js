@@ -1,5 +1,4 @@
 import ModernError from 'modern-errors'
-
 import modernErrorsBugs from 'modern-errors-bugs'
 
 export const BaseError = ModernError.subclass('BaseError', {
