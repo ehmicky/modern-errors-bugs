@@ -1,6 +1,6 @@
 // If defined, the option prints a line recommending to report the error.
 // The option value can be the `bugs.url` field of `package.json`, which is
-// easier to retrieve with JSON imports (Node >=16.14.0)
+// easier to retrieve with JSON imports (Node >=21.0.0)
 export const getOptions = (options) =>
   options === undefined ? options : `${BUGS_PREFIX}${ensureBugsUrl(options)}`
 
