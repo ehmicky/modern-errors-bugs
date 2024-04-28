@@ -36,6 +36,7 @@ const validateBugsString = (options) => {
 
 const getUrlError = (error, options) => {
   try {
+    // TODO: use URL.parse() after dropping support for Node <21.1.0
     // eslint-disable-next-line no-new
     new URL(options, EXAMPLE_ORIGIN)
     return 'an absolute URL.'
