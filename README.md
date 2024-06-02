@@ -49,8 +49,8 @@ export const UnknownError = BaseError.subclass('UnknownError', {
 })
 ```
 
-[Unknown errors](https://github.com/ehmicky/modern-errors/README.md#-unknown-errors)
-now include the following message.
+[Unknown errors](https://github.com/ehmicky/modern-errors#-unknown-errors) now
+include the following message.
 
 ```
 Please report this bug at: https://github.com/my-name/my-project/issues
@@ -87,8 +87,8 @@ The bug reports URL must be a `string` or a
 [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL).
 
 While this plugin is especially useful with
-[_unknown_ errors](https://github.com/ehmicky/modern-errors/README.md#-unknown-errors),
-it can also apply to (in priority order):
+[_unknown_ errors](https://github.com/ehmicky/modern-errors#-unknown-errors), it
+can also apply to (in priority order):
 
 - Any error: second argument to
   [`ModernError.subclass()`](https://github.com/ehmicky/modern-errors#options-1)
