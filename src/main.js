@@ -1,4 +1,4 @@
-import { getOptions, BUGS_PREFIX } from './options.js'
+import { BUGS_PREFIX, getOptions } from './options.js'
 
 const properties = ({ error: { message }, options }) => {
   if (options === undefined) {

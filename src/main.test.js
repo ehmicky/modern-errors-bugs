@@ -3,8 +3,8 @@ import { each } from 'test-each'
 
 import {
   BaseError,
-  TEST_BUGS_URL,
   TEST_BUGS_STRING,
+  TEST_BUGS_URL,
   TEST_MESSAGE,
 } from './helpers/main.test.js'
 
