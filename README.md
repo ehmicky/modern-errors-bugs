@@ -111,15 +111,15 @@ throw new ExampleError('...', {
 
 ## Using `package.json`
 
-```js
+```json
 // package.json
 // See https://docs.npmjs.com/cli/configuring-npm/package-json#bugs
 {
-  ...
+  // ...
   "bugs": {
     "url": "https://github.com/my-name/my-project/issues"
-  },
-  ...
+  }
+  // ...
 }
 ```
 
