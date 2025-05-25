@@ -109,6 +109,28 @@ throw new ExampleError('...', {
 })
 ```
 
+## Using `package.json`
+
+```json
+// package.json
+// See https://docs.npmjs.com/cli/configuring-npm/package-json#bugs
+{
+  ...
+  "bugs": {
+    "url": "https://github.com/my-name/my-project/issues"
+  },
+  ...
+}
+```
+
+```js
+import packageJson from '../../package.json' with { type: 'json' }
+
+export const UnknownError = BaseError.subclass('UnknownError', {
+  bugs: packageJson.bugs.url,
+})
+```
+
 # Related projects
 
 - [`modern-errors`](https://github.com/ehmicky/modern-errors): Handle errors in
