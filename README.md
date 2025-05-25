@@ -111,7 +111,7 @@ throw new ExampleError('...', {
 
 ## Using `package.json`
 
-```json
+```js
 // package.json
 // See https://docs.npmjs.com/cli/configuring-npm/package-json#bugs
 {
